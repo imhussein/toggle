@@ -16,22 +16,17 @@ body {
   line-height: 1.7;
   color: #777;
   box-sizing: border-box;
+  overflow: hidden;
 }
 
 .toggle {
   &__wrapper {
     height: 100vh;
-    background: #eb3349;
-    background: -webkit-linear-gradient(to right, #f45c43, #eb3349);
-    background: linear-gradient(to right, #f45c43, #eb3349);
+    background: #f7f8fb;
     display: flex;
     justify-content: center;
     align-items: center;
     transition: all 0.6s cubic-bezier(1, 0, 0, 1);
-
-    &-checked {
-      background: #fff;
-    }
   }
 
   &__btn {
@@ -39,18 +34,18 @@ body {
     width: 10rem;
     height: 4.9rem;
     border-radius: 5rem;
-    background-color: #fff;
-    box-shadow: 0 1.5rem 2rem rgba(0, 0, 0, 0.2);
+    background-color: rgba(#eb3349, 0.96);
+    box-shadow: 0 0.15rem 0.06rem rgba(0, 0, 0, 0.25);
     transition: all 0.6s cubic-bezier(1, 0, 0, 1);
     animation: scale 0.6s cubic-bezier(0.23, 1, 0.32, 1) 0.4s backwards;
 
     &-checked {
-      background-color: rgba(#eb3349, 0.96);
+      background-color: #f7f8fb;
     }
 
     &::after {
       content: "";
-      background-color: rgba(#eb3349, 0.96);
+      background-color: #f7f8fb;
       width: 3.5rem;
       height: 3.5rem;
       position: absolute;
@@ -59,7 +54,7 @@ body {
       top: 50%;
       transform: translateY(-50%);
       display: block;
-      transition: all 0.6s cubic-bezier(1, 0, 0, 1);
+      transition: all 0.4s cubic-bezier(1, 0, 0, 1);
     }
   }
 
@@ -80,7 +75,43 @@ body {
 
   &__checked::after {
     transform: translate(150%, -50%);
-    background-color: #fff;
+    background-color: rgba(#eb3349, 0.96);
+  }
+
+  &__off,
+  &__on {
+    position: absolute;
+    border-radius: 50%;
+    transition: all 0.4s cubic-bezier(1, 0, 0, 1);
+    background: transparent;
+    width: 5rem;
+    height: 5rem;
+
+    &.active {
+      transform: scale(111);
+    }
+  }
+
+  &__off {
+    left: 0;
+    bottom: 0;
+
+    &.active {
+      background-color: #f7f8fb;
+    }
+
+  }
+
+  &__on {
+    top: 0;
+    right: 0;
+
+    &.active {
+      transform: scale(111);
+      background: #eb3349;
+      background: -webkit-radial-gradient(circle, #eb3349, #f45c43);
+      background: radial-gradient(circle, #eb3349, #f45c43);
+    }
   }
 }
 

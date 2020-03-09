@@ -14,6 +14,10 @@ const Toggle = ({ ...rest }) => {
         value.toggle ? "toggle__wrapper-checked" : ""
       }`}
     >
+      <span className={`toggle__off ${!value.toggle ? "active" : ""}`}></span>
+      <span
+        className={`toggle__on ${value.toggle ? "active" : ""}`}
+      ></span>{" "}
       <div
         className={`toggle__btn ${
           value.toggle ? "toggle__checked toggle__btn-checked" : ""
